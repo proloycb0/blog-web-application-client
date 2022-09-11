@@ -10,21 +10,26 @@ import RequireAuth from './pages/Login/RequireAuth';
 import Blogs from './pages/Home/Blogs';
 import Archive from './pages/Home/Archive';
 import Trash from './pages/Home/Trash';
+import Sidebar from './pages/Home/Sidebar';
 
 function App() {
   return (
     <Box>
       <Navbar />
-      <Routes>
-        <Route path='/' element={<RequireAuth><Home /></RequireAuth>}>
-          <Route index element={<Home />} />
-          <Route path='blogs' element={<Blogs />} />
-          <Route path='archive' element={<Archive />} />
-          <Route path='trash' element={<Trash />} />
-        </Route>
-        <Route path='login' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
-      </Routes>
+      <Stack direction="row" spacing={2}>
+        <Sidebar />
+        <Routes>
+          <Route path='/' element={<RequireAuth><Home /></RequireAuth>}>
+
+          </Route>
+          <Route path='/blogs' element={<Blogs />} />
+          <Route path='/archive' element={<Archive />} />
+          <Route path='/trash' element={<Trash />} />
+
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
+        </Routes>
+      </Stack>
       <ToastContainer />
     </Box>
   );

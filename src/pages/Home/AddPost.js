@@ -51,7 +51,7 @@ const AddPost = () => {
                     setOpen(false)
                 }
                 else {
-                    toast.error('Product added failed')
+                    toast.error('Blogs added failed')
                 }
             })
     

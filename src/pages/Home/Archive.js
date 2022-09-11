@@ -3,7 +3,7 @@ import React from 'react';
 const Archive = () => {
     return (
         <div>
-            hello
+            <p>Hello archive</p>
         </div>
     );
 };

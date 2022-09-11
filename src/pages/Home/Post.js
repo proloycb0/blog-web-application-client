@@ -1,4 +1,4 @@
-import { Archive, Favorite, FavoriteBorder, MoreVert} from "@mui/icons-material";
+import { Archive, Favorite, FavoriteBorder, MoreVert } from "@mui/icons-material";
 import {
     Avatar,
     Card,
@@ -10,27 +10,31 @@ import {
     IconButton,
     Typography,
 } from "@mui/material";
-import { toast } from "react-toastify";
+
 const Post = ({ blog }) => {
-    const { name, description, image, userName, photo } = blog;
+    const { name, description, image, userName, userEmail, photo } = blog;
 
     const handleArchive = () => {
+        const blogArchive = {
+            userName,
+            userEmail,
+            photo,
+            name,
+            description,
+            image,
+
+        }
         fetch('http://localhost:5000/archive', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             },
-            body: JSON.stringify(blog)
+            body: JSON.stringify(blogArchive)
         })
             .then(res => res.json())
-            .then(inserted => {
-                if (inserted.insertedId) {
-                    toast.success('Blogs archived successfully');
-                }
-                else {
-                    toast.error('Product added failed')
-                }
+            .then(data => {
+                
             })
     }
     return (
@@ -68,7 +72,7 @@ const Post = ({ blog }) => {
                     />
                 </IconButton>
                 <IconButton aria-label="share">
-                    <Archive onclick={handleArchive()}/>
+                    <Archive onclick={handleArchive()} />
                 </IconButton>
             </CardActions>
         </Card>

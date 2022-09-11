@@ -1,14 +1,13 @@
-import { Stack } from '@mui/material';
+
+import { Box} from '@mui/material';
 import React from 'react';
 import Feed from './Feed';
-import Sidebar from './Sidebar';
 
 const Home = () => {
     return (
-        <Stack direction="row" spacing={2} justifyContent="space-between">
-            <Sidebar/>
+        <Box flex={3} p={{ xs: 0, md: 2 }}>
             <Feed />
-        </Stack>
+        </Box>
     );
 };
 

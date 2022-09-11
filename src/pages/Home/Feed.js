@@ -20,7 +20,7 @@ const Feed = () => {
     }
 
     return (
-        <Box flex={3} p={{ xs: 0, md: 2 }}>
+        <Box >
             <AddPost/>
             {
                 blogs?.map(blog => <Post 

@@ -32,7 +32,7 @@ const Navbar = () => {
         <MenuIcon sx={{ display: { xs: "block", sm: "none" } }} />
         <Search><InputBase placeholder='Search...' /></Search>
         <Icons>
-          <Avatar onClick={e => setOpen(true)} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          <Avatar onClick={e => setOpen(true)} alt="" src={user?.photoURL} />
         </Icons>
       </StyledToolbar>
       <Menu sx={{ marginTop: "40px" }}

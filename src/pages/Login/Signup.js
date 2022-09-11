@@ -35,7 +35,7 @@ const Signup = () => {
         navigate('/');
     }
     if (error || gError || updateError) {
-        signUpError = <p sx={{color: 'red'}}><small>{error?.message || gError?.message}</small></p>
+        signUpError = <p style={{color: 'red'}}><small>{error?.message || gError?.message}</small></p>
     }
     const handleSubmit = async () => {
         await createUserWithEmailAndPassword(email, password);

@@ -36,7 +36,7 @@ const Login = () => {
         return <Loading />
     }
     if (error || gError) {
-        signInError = <p sx={{ color: 'red' }}><small>{error?.message || gError?.message}</small></p>
+        signInError = <p style={{color: 'red'}}><small>{error?.message || gError?.message}</small></p>
     }
     const handleSubmit = async () => {
         await signInWithEmailAndPassword(email, password);

@@ -1,6 +1,7 @@
 
 import { Box } from '@mui/material';
 import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
 import Navbar from './pages/Shared/Navbar';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <Box>
       <Navbar/>
       <Home/>
+      <Login/>
     </Box>
   );
 }

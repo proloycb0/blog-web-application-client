@@ -1,4 +1,4 @@
-import { Avatar, Button, Grid, Paper, TextField, Typography } from '@mui/material';
+import { Avatar, Button, Divider, Grid, Paper, TextField, Typography } from '@mui/material';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import React, { useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
@@ -6,6 +6,7 @@ import auth from '../../firebase.init';
 import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import { toast } from 'react-toastify';
+
 
 const Signup = () => {
     const [name, setName] = useState('');
@@ -64,6 +65,7 @@ const Signup = () => {
                             Login
                         </Link>
                     </Typography>
+                    <Divider>OR</Divider>
                     <Button onClick={() => signInWithGoogle()} color='primary' variant="contained" style={btnStyle} fullWidth>Google Sign Up</Button>
                 </form>
             </Paper>

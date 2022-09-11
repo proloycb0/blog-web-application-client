@@ -1,4 +1,4 @@
-import { Avatar, Button, Grid, Paper, TextField, Typography } from '@mui/material';
+import { Avatar, Button, Divider, Grid, Paper, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -30,6 +30,7 @@ const Login = () => {
     useEffect(() => {
         if (user || gUser) {
             navigate(from, { replace: true });
+            navigate('/')
         }
     }, [user, gUser, from, navigate]);
     if (loading || gLoading || sending) {
@@ -70,6 +71,7 @@ const Login = () => {
                         SignUp
                     </Link>
                 </Typography>
+                <Divider>OR</Divider>
                 <Button onClick={() => signInWithGoogle()} color='primary' variant="contained" style={btnStyle} fullWidth>Google Sign in</Button>
             </Paper>
         </Grid>

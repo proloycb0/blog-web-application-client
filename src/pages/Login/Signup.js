@@ -6,6 +6,7 @@ import auth from '../../firebase.init';
 import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import { toast } from 'react-toastify';
+import useToken from '../../hooks/useToken';
 
 
 const Signup = () => {
@@ -28,11 +29,11 @@ const Signup = () => {
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const [sendEmailVerification, sending] = useSendEmailVerification(auth);
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-
+    const [token] = useToken(user || gUser);
     if(loading || gLoading || updating || sending){
         return <Loading/>
     }
-    if(user || gUser){
+    if(token){
         navigate('/');
     }
     if (error || gError || updateError) {

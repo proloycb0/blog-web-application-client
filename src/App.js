@@ -6,13 +6,14 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Route, Routes } from 'react-router-dom';
 import Signup from './pages/Login/Signup';
+import RequireAuth from './pages/Login/RequireAuth';
 
 function App() {
   return (
     <Box>
       <Navbar/>
       <Routes>
-        <Route path='/' element={<Home />}/>
+        <Route path='/' element={<RequireAuth><Home /></RequireAuth>}/>
         <Route path='login' element={<Login />}/>
         <Route path='/signup' element={<Signup />}/>
       </Routes>

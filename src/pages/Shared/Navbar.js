@@ -1,6 +1,10 @@
-import { AppBar, Avatar, Box, InputBase, Menu, MenuItem, styled, Toolbar, Typography } from '@mui/material';
+import { AppBar, Avatar, Box, Button, InputBase, Menu, MenuItem, styled, Toolbar, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { Link } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -15,10 +19,12 @@ const Search = styled("div")(({ theme }) => ({
 }));
 
 const Icons = styled(Box)(({ theme }) => ({
-  
+
 }));
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [user] = useAuthState(auth);
+
   return (
     <AppBar position='sticky'>
       <StyledToolbar>
@@ -26,13 +32,13 @@ const Navbar = () => {
         <MenuIcon sx={{ display: { xs: "block", sm: "none" } }} />
         <Search><InputBase placeholder='Search...' /></Search>
         <Icons>
-          <Avatar onClick={e=>setOpen(true)} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          <Avatar onClick={e => setOpen(true)} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
         </Icons>
       </StyledToolbar>
-      <Menu sx={{marginTop: "40px"}}
+      <Menu sx={{ marginTop: "40px" }}
         id="basic-menu"
         open={open}
-        onClose={(e)=>setOpen(false)}
+        onClose={(e) => setOpen(false)}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
@@ -43,7 +49,8 @@ const Navbar = () => {
         }}
       >
         <MenuItem>Profile</MenuItem>
-        <MenuItem>Logout</MenuItem>
+        <MenuItem>{user ? <Button onClick={() => signOut(auth)}>Sign Out</Button>
+          : <Link style={{ textDecoration: 'none', color: 'black' }} to="/login">Login</Link>}</MenuItem>
       </Menu>
     </AppBar>
   );

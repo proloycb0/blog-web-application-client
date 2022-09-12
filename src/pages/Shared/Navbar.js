@@ -28,8 +28,7 @@ const Navbar = () => {
   return (
     <AppBar position='sticky'>
       <StyledToolbar>
-        <Typography variant='h6' sx={{ display: { xs: "none", sm: "block" } }}><Link style={{ textDecoration: 'none', color: 'white' }} to="/">Kep Blogger</Link></Typography>
-        <MenuIcon sx={{ display: { xs: "block", sm: "none" } }} />
+        <Typography variant={{xs: 'p', md: 'h6'}}><Link style={{ textDecoration: 'none', color: 'white' }} to="/">Kep Blogger</Link></Typography>
         <Search><InputBase placeholder='Search...' /></Search>
         <Icons>
           <Avatar onClick={e => setOpen(true)} alt="" src={user?.photoURL} />

@@ -8,8 +8,18 @@ import {
     CardMedia,
     Checkbox,
     IconButton,
+    styled,
     Typography,
 } from "@mui/material";
+
+const CardStyle = styled(Card)(({ theme })=>({
+    [theme.breakpoints.down('sm')]: {
+        margin: 5, marginRight: 0, width: '70vw' 
+      },
+    [theme.breakpoints.up('sm')]: {
+        margin: 5, width: '45vw'
+      },
+}));
 
 const Post = ({ blog }) => {
     const { name, description, image, userName, userEmail, photo } = blog;
@@ -38,7 +48,7 @@ const Post = ({ blog }) => {
             })
     }
     return (
-        <Card sx={{ margin: 5, width: '40vw' }}>
+        <Card  sx={{ width:{xs: '75vw', md: '45vw'}, margin:{xs: 4, md: 5 }}} >
             <CardHeader
                 avatar={
                     <Avatar src={photo} sx={{ bgcolor: "primary" }} aria-label="recipe">

@@ -1,10 +1,11 @@
+import { Box } from '@mui/material';
 import React from 'react';
 
 const Blogs = () => {
     return (
-        <div>
-            Hello
-        </div>
+        <Box sx={{width: '100%'}}>
+            hello
+        </Box>
     );
 };
 

@@ -3,7 +3,7 @@ import React from 'react';
 import { Home, AllInbox, Archive, RestoreFromTrash } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
-const StyledBox = styled(Box)(({ theme })=>({
+const StyledText = styled(ListItemText)(({ theme })=>({
     [theme.breakpoints.only('xs')]: {
         display: 'none'
       },
@@ -15,7 +15,7 @@ const Sidebar = () => {
         setSelectedIndex(index);
     };
     return (
-        <StyledBox flex={1}>
+        <Box flex={{xs: 0, md: 1}}>
             <Box position='fixed'>
                 <List component="nav" aria-label="main mailbox folders">
                     <ListItemButton as={Link} to='/'
@@ -25,7 +25,7 @@ const Sidebar = () => {
                         <ListItemIcon>
                             <Home />
                         </ListItemIcon>
-                        <ListItemText primary="Home" />
+                        <StyledText primary="Home" />
                     </ListItemButton>
                     <ListItemButton as={Link} to='/blogs'
                         selected={selectedIndex === 1}
@@ -34,7 +34,7 @@ const Sidebar = () => {
                         <ListItemIcon>
                             <AllInbox />
                         </ListItemIcon>
-                        <ListItemText primary="Blogs" />
+                        <StyledText primary="Blogs" />
                     </ListItemButton>
                     <ListItemButton as={Link} to='/archive'
                         selected={selectedIndex === 2}
@@ -43,7 +43,7 @@ const Sidebar = () => {
                         <ListItemIcon>
                             <Archive />
                         </ListItemIcon>
-                        <ListItemText primary="Archive" />
+                        <StyledText primary="Archive" />
                     </ListItemButton>
                     <ListItemButton as={Link} to='/trash'
                         selected={selectedIndex === 3}
@@ -52,11 +52,11 @@ const Sidebar = () => {
                         <ListItemIcon>
                             <RestoreFromTrash />
                         </ListItemIcon>
-                        <ListItemText primary="Trash" />
+                        <StyledText primary="Trash" />
                     </ListItemButton>
                 </List>
             </Box>
-        </StyledBox>
+        </Box>
     );
 };
 

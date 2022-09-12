@@ -1,4 +1,4 @@
-import { Archive, Favorite, FavoriteBorder, MoreVert } from "@mui/icons-material";
+import { Delete, Edit, Favorite, FavoriteBorder, MoreVert } from "@mui/icons-material";
 import {
     Avatar,
     Card,
@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 
 
-const Post = ({ blog }) => {
+const Blog = ({ blog }) => {
     const { name, description, image, userName, userEmail, photo } = blog;
 
     const handleArchive = () => {
@@ -39,7 +39,7 @@ const Post = ({ blog }) => {
             })
     }
     return (
-        <Card  sx={{ width:{xs: '75vw', md: '45vw'}, margin:{xs: 4, md: 5 }}} >
+        <Card >
             <CardHeader
                 avatar={
                     <Avatar src={photo} sx={{ bgcolor: "primary" }} aria-label="recipe">
@@ -55,7 +55,6 @@ const Post = ({ blog }) => {
             />
             <CardMedia
                 component="img"
-                height="300px"
                 image={image}
                 alt={name}
             />
@@ -72,12 +71,15 @@ const Post = ({ blog }) => {
                         checkedIcon={<Favorite sx={{ color: "red" }} />}
                     />
                 </IconButton>
-                <IconButton onClick={() => handleArchive()} aria-label="share">
-                    <Archive />
+                <IconButton aria-label="Edit">
+                     <Edit/>
+                </IconButton>
+                <IconButton aria-label="delete">
+                     <Delete/>
                 </IconButton>
             </CardActions>
         </Card>
     );
 };
 
-export default Post;
+export default Blog;

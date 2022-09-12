@@ -6,7 +6,7 @@ import TrashItem from './TrashItem';
 
 
 const Trash = () => {
-    const { data: trashes, isLoading } = useQuery('trash', () => fetch('http://localhost:5000/trash', {
+    const { data: trashes, isLoading, refetch } = useQuery('trash', () => fetch('http://localhost:5000/trash', {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -26,6 +26,7 @@ const Trash = () => {
                    trashes?.map(blog => <Grid key={blog._id} sx={{margin:{xs: 4, md: 5 }}} item xs={4} sm={4} md={6} >
                         <TrashItem
                             blog={blog}
+                            refetch={refetch}
                         /></Grid>)
                 }
             </Grid>

@@ -32,6 +32,7 @@ const Archived = ({ blog }) => {
             />
             <CardMedia
                 component="img"
+                sx={{height: {md: '200px'}}}
                 image={image}
                 alt={name}
             />

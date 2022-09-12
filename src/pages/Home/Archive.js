@@ -19,11 +19,11 @@ const Archive = () => {
         return <Loading />
     }
     return (
-        <Box flex={3} p={{ xs: 0, md: 2 }}>
-            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+        <Box flex={4} p={{ xs: 0, md: 2 }}>
+            <Grid container spacing={{ xs: 1, md: 1 }} columns={{ xs: 4, sm: 8, md: 16 }}>
                 {
 
-                   archives?.map(blog => <Grid key={blog._id} sx={{margin:{xs: 4, md: 5 }}} item xs={4} sm={4} md={5} >
+                   archives?.map(blog => <Grid key={blog._id} sx={{margin:{xs: 4, md: 5 }}} item xs={4} sm={4} md={6} >
                         <Archived
                             blog={blog}
                         /></Grid>)

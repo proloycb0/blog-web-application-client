@@ -1,4 +1,4 @@
-import { Delete, Edit, Favorite, FavoriteBorder, MoreVert } from "@mui/icons-material";
+import { Favorite, FavoriteBorder, MoreVert, Unarchive } from "@mui/icons-material";
 import {
     Avatar,
     Card,
@@ -11,39 +11,12 @@ import {
     Typography,
 } from "@mui/material";
 import React from 'react';
-import { toast } from "react-toastify";
 
 
-const Blog = ({ blog, refetch }) => {
-    const {_id, name, description, image, userName, userEmail, photo } = blog;
-
-    const handleDelete = () => {
-        const blogTrash = {
-            userName,
-            userEmail,
-            photo,
-            name,
-            description,
-            image,
-        }
-        fetch(`http://localhost:5000/blogs/${_id}`, {
-            method: 'DELETE',
-            headers: {
-                'content-type': 'application/json',
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            },
-            body: JSON.stringify(blogTrash)
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.deletedCount) {
-                toast.success(`${name} is deleted`);
-                refetch();
-            }
-        })
-    }
+const TrashItem = ({ blog }) => {
+    const { name, description, image, userName, userEmail, photo } = blog;
     return (
-        <Card>
+        <Card >
             <CardHeader
                 avatar={
                     <Avatar src={photo} sx={{ bgcolor: "primary" }} aria-label="recipe">
@@ -76,15 +49,12 @@ const Blog = ({ blog, refetch }) => {
                         checkedIcon={<Favorite sx={{ color: "red" }} />}
                     />
                 </IconButton>
-                <IconButton aria-label="Edit">
-                     <Edit/>
-                </IconButton>
-                <IconButton onClick={() => handleDelete()} aria-label="delete">
-                     <Delete/>
+                <IconButton aria-label="unarchive">
+                     <Unarchive/>
                 </IconButton>
             </CardActions>
         </Card>
     );
 };
 
-export default Blog;
+export default TrashItem;

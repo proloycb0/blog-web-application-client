@@ -5,7 +5,7 @@ import Feed from './Feed';
 
 const Home = () => {
     return (
-        <Box flex={3} p={{ xs: 0, md: 2 }}>
+        <Box flex={4} p={{ xs: 0, md: 2 }}>
             <Feed />
         </Box>
     );

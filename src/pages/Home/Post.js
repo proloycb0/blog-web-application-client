@@ -11,6 +11,7 @@ import {
     Typography,
 } from "@mui/material";
 import React from 'react';
+import { toast } from "react-toastify";
 
 
 const Post = ({ blog }) => {
@@ -36,11 +37,11 @@ const Post = ({ blog }) => {
         })
             .then(res => res.json())
             .then(data => {
-                
+                toast.success('Blog archived successful')
             })
     }
     return (
-        <Card  sx={{ width:{xs: '75vw', md: '45vw'}, margin:{xs: 4, md: 5 }}} >
+        <Card  sx={{ width:{xs: '75vw', md: '50vw'}, margin:{xs: 4, md: 5 }}} >
             <CardHeader
                 avatar={
                     <Avatar src={photo} sx={{ bgcolor: "primary" }} aria-label="recipe">
@@ -56,9 +57,9 @@ const Post = ({ blog }) => {
             />
             <CardMedia
                 component="img"
-                height="300px"
                 image={image}
                 alt={name}
+                sx={{height: {md: '300px'}}}
             />
             <CardContent>
                 <Typography variant="h6">{name}</Typography>

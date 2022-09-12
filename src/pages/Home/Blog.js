@@ -11,10 +11,37 @@ import {
     Typography,
 } from "@mui/material";
 import React from 'react';
+import { toast } from "react-toastify";
 
 
-const Blog = ({ blog }) => {
-    const { name, description, image, userName, userEmail, photo } = blog;
+const Blog = ({ blog, refetch }) => {
+    const {_id, name, description, image, userName, userEmail, photo } = blog;
+
+    const handleDelete = () => {
+        const blogTrash = {
+            userName,
+            userEmail,
+            photo,
+            name,
+            description,
+            image,
+        }
+        fetch(`http://localhost:5000/blogs/${_id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(blogTrash)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.deletedCount) {
+                toast.success(`${name} is deleted`);
+                refetch();
+            }
+        })
+    }
     return (
         <Card >
             <CardHeader
@@ -32,6 +59,7 @@ const Blog = ({ blog }) => {
             />
             <CardMedia
                 component="img"
+                height="300px"
                 image={image}
                 alt={name}
             />
@@ -51,7 +79,7 @@ const Blog = ({ blog }) => {
                 <IconButton aria-label="Edit">
                      <Edit/>
                 </IconButton>
-                <IconButton aria-label="delete">
+                <IconButton onClick={() => handleDelete()} aria-label="delete">
                      <Delete/>
                 </IconButton>
             </CardActions>

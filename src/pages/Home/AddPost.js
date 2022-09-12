@@ -1,5 +1,5 @@
-import { Add, Image, VideoCameraBack } from '@mui/icons-material';
-import { Avatar, Box, Button, Fab, IconButton, Modal, Stack, styled, TextField, Tooltip, Typography } from '@mui/material';
+import { Add} from '@mui/icons-material';
+import { Avatar, Box, Button, Fab, Modal, styled, TextField, Tooltip, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
@@ -18,7 +18,7 @@ const UserBox = styled(Box)({
     gap: "10px",
     marginBottom: "20px",
 });
-const AddPost = () => {
+const AddPost = ({refetch}) => {
     const [open, setOpen] = useState(false);
     const [user] = useAuthState(auth);
     const [title, setTitle] = useState('');
@@ -48,7 +48,8 @@ const AddPost = () => {
             .then(inserted => {
                 if (inserted.insertedId) {
                     toast.success('Blogs added successfully');
-                    setOpen(false)
+                    setOpen(false);
+                    refetch();
                 }
                 else {
                     toast.error('Blogs added failed')

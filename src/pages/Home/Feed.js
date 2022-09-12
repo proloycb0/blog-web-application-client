@@ -6,7 +6,7 @@ import AddPost from './AddPost';
 import Post from './Post';
 
 const Feed = () => {
-    const { data: blogs, isLoading } = useQuery("blogs", () => fetch('http://localhost:5000/blogs', {
+    const { data: blogs, isLoading, refetch } = useQuery("blogs", () => fetch('http://localhost:5000/blogs', {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -21,7 +21,7 @@ const Feed = () => {
 
     return (
         <Box >
-            <AddPost/>
+            <AddPost refetch={refetch}/>
             {
                 blogs?.map(blog => <Post 
                 key={blog._id}

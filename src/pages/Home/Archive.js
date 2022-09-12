@@ -6,7 +6,7 @@ import Archived from './Archived';
 
 
 const Archive = () => {
-    const { data: archives, isLoading } = useQuery('archive', () => fetch('http://localhost:5000/archive', {
+    const { data: archives, isLoading, refetch } = useQuery('archive', () => fetch('http://localhost:5000/archive', {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -26,6 +26,7 @@ const Archive = () => {
                    archives?.map(blog => <Grid key={blog._id} sx={{margin:{xs: 4, md: 5 }}} item xs={4} sm={4} md={6} >
                         <Archived
                             blog={blog}
+                            refetch={refetch}
                         /></Grid>)
                 }
             </Grid>

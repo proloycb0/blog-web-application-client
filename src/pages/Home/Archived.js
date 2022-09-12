@@ -11,10 +11,27 @@ import {
     Typography,
 } from "@mui/material";
 import React from 'react';
+import { toast } from "react-toastify";
 
 
-const Archived = ({ blog }) => {
-    const { name, description, image, userName, userEmail, photo } = blog;
+const Archived = ({ blog, refetch }) => {
+    const { _id, name, description, image, userName, photo } = blog;
+
+    const handleDelete = () => {
+        fetch(`http://localhost:5000/archive/${_id}`, {
+            method: 'DELETE',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount) {
+                    toast.success(`${name} is unArchived`);
+                    refetch();
+                }
+            })
+    }
     return (
         <Card >
             <CardHeader
@@ -49,7 +66,7 @@ const Archived = ({ blog }) => {
                         checkedIcon={<Favorite sx={{ color: "red" }} />}
                     />
                 </IconButton>
-                <IconButton aria-label="unarchive">
+                <IconButton onClick={() => handleDelete()} aria-label="unarchive">
                      <Unarchive/>
                 </IconButton>
             </CardActions>

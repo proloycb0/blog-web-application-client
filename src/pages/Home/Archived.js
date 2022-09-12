@@ -1,4 +1,4 @@
-import { Delete, Edit, Favorite, FavoriteBorder, MoreVert } from "@mui/icons-material";
+import { Favorite, FavoriteBorder, MoreVert, Unarchive } from "@mui/icons-material";
 import {
     Avatar,
     Card,
@@ -13,7 +13,7 @@ import {
 import React from 'react';
 
 
-const Blog = ({ blog }) => {
+const Archived = ({ blog }) => {
     const { name, description, image, userName, userEmail, photo } = blog;
     return (
         <Card >
@@ -48,15 +48,12 @@ const Blog = ({ blog }) => {
                         checkedIcon={<Favorite sx={{ color: "red" }} />}
                     />
                 </IconButton>
-                <IconButton aria-label="Edit">
-                     <Edit/>
-                </IconButton>
-                <IconButton aria-label="delete">
-                     <Delete/>
+                <IconButton aria-label="unarchive">
+                     <Unarchive/>
                 </IconButton>
             </CardActions>
         </Card>
     );
 };
 
-export default Blog;
+export default Archived;

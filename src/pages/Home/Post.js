@@ -10,6 +10,7 @@ import {
     IconButton,
     Typography,
 } from "@mui/material";
+import React from 'react';
 
 
 const Post = ({ blog }) => {
@@ -72,7 +73,7 @@ const Post = ({ blog }) => {
                         checkedIcon={<Favorite sx={{ color: "red" }} />}
                     />
                 </IconButton>
-                <IconButton onClick={() => handleArchive()} aria-label="share">
+                <IconButton onClick={() => handleArchive()} aria-label="archive">
                     <Archive />
                 </IconButton>
             </CardActions>

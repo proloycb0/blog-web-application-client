@@ -54,7 +54,7 @@ const Login = () => {
         }
     }
     return (
-        <Grid>
+        <Grid flex={4} p={{ xs: 0, md: 2 }}>
             <Paper elevation={20} style={paperStyle}>
                 <Grid align='center'>
                     <Avatar style={avatarStyle}><LockOutlinedIcon /></Avatar>

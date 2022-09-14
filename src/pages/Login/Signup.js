@@ -41,7 +41,7 @@ const Signup = () => {
     }
     const handleSubmit = async () => {
         await createUserWithEmailAndPassword(email, password);
-        await updateProfile({displayName: name, email: email});
+        await updateProfile({displayName: name, email: email, photoURL: ''});
         await sendEmailVerification();
         toast.success('SignUp successful');
     }

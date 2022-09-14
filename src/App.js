@@ -13,6 +13,7 @@ import Trash from './pages/Home/Trash';
 import Sidebar from './pages/Home/Sidebar';
 import RightBar from './pages/Home/RightBar';
 import Profile from './pages/Shared/Profile';
+import MyAccount from './pages/Shared/MyAccount';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/myAccount' element={<MyAccount />} />
         </Routes>
         <RightBar/>
       </Stack>

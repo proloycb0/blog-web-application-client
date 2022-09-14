@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
+import Loading from './Loading';
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -22,16 +23,19 @@ const Icons = styled(Box)(({ theme }) => ({
 }));
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
 
+  if(loading){
+    return <Loading/>
+  }
   return (
     <AppBar position='sticky'>
       <StyledToolbar>
         <Typography variant={{xs: 'p', md: 'h6'}}><Link style={{ textDecoration: 'none', color: 'white' }} to="/">Kep Blogger</Link></Typography>
         <Search><InputBase placeholder='Search...' /></Search>
         <Icons>
-          <Avatar onClick={e => setOpen(true)} alt="" src={user?.photoURL} />
+          <Avatar onClick={e => setOpen(true)} alt="" src={user && user?.photoURL} />
         </Icons>
       </StyledToolbar>
       <Menu sx={{ marginTop: "40px" }}
@@ -47,7 +51,8 @@ const Navbar = () => {
           horizontal: 'right',
         }}
       >
-        <MenuItem onClick={() => navigate('/profile')}>Profile</MenuItem>
+        <MenuItem onClick={() => navigate('/profile')}>Edit Profile</MenuItem>
+        <MenuItem onClick={() => navigate('/myAccount')}>MyAccount</MenuItem>
         <MenuItem>{user ? <Button onClick={() => signOut(auth)}>Sign Out</Button>
           : <Link style={{ textDecoration: 'none', color: 'black' }} to="/login">Login</Link>}</MenuItem>
       </Menu>

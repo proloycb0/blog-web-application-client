@@ -12,6 +12,7 @@ import Archive from './pages/Home/Archive';
 import Trash from './pages/Home/Trash';
 import Sidebar from './pages/Home/Sidebar';
 import RightBar from './pages/Home/RightBar';
+import Profile from './pages/Shared/Profile';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
 
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
+          <Route path='/profile' element={<Profile />} />
         </Routes>
         <RightBar/>
       </Stack>

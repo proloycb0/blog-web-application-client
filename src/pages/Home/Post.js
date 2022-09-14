@@ -11,17 +11,21 @@ import {
     Typography,
 } from "@mui/material";
 import React from 'react';
+import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
+import auth from "../../firebase.init";
 
 
 const Post = ({ blog }) => {
+    const [user] = useAuthState(auth);
     const { name, description, image, userName, userEmail, photo } = blog;
 
     const handleArchive = () => {
         const blogArchive = {
+            email: user?.email,
             userName,
             userEmail,
-            photo,
+            photo: photo || '',
             name,
             description,
             image,

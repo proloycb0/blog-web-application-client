@@ -1,12 +1,15 @@
 import { Box, Grid } from '@mui/material';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
+import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import TrashItem from './TrashItem';
 
 
 const Trash = () => {
-    const { data: trashes, isLoading, refetch } = useQuery('trash', () => fetch('http://localhost:5000/trash', {
+    const [user] = useAuthState(auth)
+    const { data: trashes, isLoading, refetch } = useQuery(['trash', user], () => fetch(`http://localhost:5000/trash?email=${user.email}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

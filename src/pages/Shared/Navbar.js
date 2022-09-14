@@ -1,9 +1,8 @@
 import { AppBar, Avatar, Box, Button, InputBase, Menu, MenuItem, styled, Toolbar, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import MenuIcon from '@mui/icons-material/Menu';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 
 const StyledToolbar = styled(Toolbar)({
@@ -24,6 +23,7 @@ const Icons = styled(Box)(({ theme }) => ({
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [user] = useAuthState(auth);
+  const navigate = useNavigate();
 
   return (
     <AppBar position='sticky'>
@@ -47,7 +47,7 @@ const Navbar = () => {
           horizontal: 'right',
         }}
       >
-        <MenuItem>Profile</MenuItem>
+        <MenuItem onClick={() => navigate('/profile')}>Profile</MenuItem>
         <MenuItem>{user ? <Button onClick={() => signOut(auth)}>Sign Out</Button>
           : <Link style={{ textDecoration: 'none', color: 'black' }} to="/login">Login</Link>}</MenuItem>
       </Menu>

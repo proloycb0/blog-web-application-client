@@ -64,9 +64,10 @@ const Blog = ({ blog, refetch }) => {
     }
     const handleDelete = () => {
         const blogTrash = {
+            email: user?.email,
             userName,
             userEmail,
-            photo,
+            photo: photo || '',
             name,
             description,
             image,

@@ -63,7 +63,7 @@ const Profile = () => {
                 'content-type': 'application/json',
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             },
-            body: JSON.stringify(users)
+            body: JSON.stringify({users})
         })
             .then(res => res.json())
             .then(async (data) => {

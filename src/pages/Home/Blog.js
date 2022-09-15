@@ -47,7 +47,7 @@ const Blog = ({ blog, refetch }) => {
             description: editDes,
             image: url
         }
-        fetch(`http://localhost:5000/blog/${_id}`, {
+        fetch(`https://intense-ocean-27340.herokuapp.com/blog/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -72,7 +72,7 @@ const Blog = ({ blog, refetch }) => {
             description,
             image,
         }
-        fetch(`http://localhost:5000/blogs/${_id}`, {
+        fetch(`https://intense-ocean-27340.herokuapp.com/blogs/${_id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',

@@ -63,7 +63,7 @@ const ProfileModal = ({ refetch }) => {
             address: addressText
         }
 
-        fetch(`http://localhost:5000/user/${user?.email}`, {
+        fetch(`https://intense-ocean-27340.herokuapp.com/user/${user?.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

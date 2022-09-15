@@ -1,6 +1,6 @@
 import { Box, List, ListItemButton, ListItemIcon, ListItemText, styled } from '@mui/material';
 import React from 'react';
-import { Home, AllInbox, Archive, RestoreFromTrash } from '@mui/icons-material';
+import { Home, AllInbox, Archive, RestoreFromTrash, Settings, Group, Person } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
 const StyledText = styled(ListItemText)(({ theme })=>({
@@ -53,6 +53,33 @@ const Sidebar = () => {
                             <RestoreFromTrash />
                         </ListItemIcon>
                         <StyledText primary="Trash" />
+                    </ListItemButton>
+                    <ListItemButton as={Link} to='/setting'
+                        selected={selectedIndex === 4}
+                        onClick={(event) => handleListItemClick(event, 4)}
+                    >
+                        <ListItemIcon>
+                            <Settings />
+                        </ListItemIcon>
+                        <StyledText primary="Settings" />
+                    </ListItemButton>
+                    <ListItemButton as={Link} to='/group'
+                        selected={selectedIndex === 5}
+                        onClick={(event) => handleListItemClick(event, 5)}
+                    >
+                        <ListItemIcon>
+                            <Group />
+                        </ListItemIcon>
+                        <StyledText primary="Group" />
+                    </ListItemButton>
+                    <ListItemButton as={Link} to='/friend'
+                        selected={selectedIndex === 6}
+                        onClick={(event) => handleListItemClick(event, 6)}
+                    >
+                        <ListItemIcon>
+                            <Person />
+                        </ListItemIcon>
+                        <StyledText primary="Friends" />
                     </ListItemButton>
                 </List>
             </Box>

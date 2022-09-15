@@ -17,7 +17,7 @@ const TrashItem = ({ blog, refetch }) => {
     const { _id, name, description, image, userName, userEmail, photo } = blog;
 
     const handleDelete = () => {
-        fetch(`http://localhost:5000/trash/${_id}`, {
+        fetch(`https://intense-ocean-27340.herokuapp.com/trash/${_id}`, {
             method: 'DELETE',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -43,7 +43,7 @@ const TrashItem = ({ blog, refetch }) => {
         }
 
         // send to your database
-        fetch('http://localhost:5000/blogs', {
+        fetch('https://intense-ocean-27340.herokuapp.com/blogs', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

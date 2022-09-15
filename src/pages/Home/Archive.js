@@ -11,7 +11,7 @@ import Sidebar from './Sidebar';
 
 const Archive = () => {
     const [user] = useAuthState(auth)
-    const { data: archives, isLoading, refetch } = useQuery(['archive', user], () => fetch(`http://localhost:5000/archive?email=${user.email}`, {
+    const { data: archives, isLoading, refetch } = useQuery(['archive', user], () => fetch(`https://intense-ocean-27340.herokuapp.com/archive?email=${user.email}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

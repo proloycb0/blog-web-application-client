@@ -31,7 +31,7 @@ const Post = ({ blog }) => {
             image,
 
         }
-        fetch('http://localhost:5000/archive', {
+        fetch('https://intense-ocean-27340.herokuapp.com/archive', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

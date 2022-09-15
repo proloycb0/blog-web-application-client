@@ -9,7 +9,7 @@ const Feed = () => {
     const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(6);
-    const { data: blogs, isLoading, refetch } = useQuery(["blogs", page, size], () => fetch(`http://localhost:5000/blogs?page=${page}&size=${size}`, {
+    const { data: blogs, isLoading, refetch } = useQuery(["blogs", page, size], () => fetch(`https://intense-ocean-27340.herokuapp.com/blogs?page=${page}&size=${size}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -19,7 +19,7 @@ const Feed = () => {
     );
 
     useEffect(() => {
-        fetch('http://localhost:5000/blogCount')
+        fetch('https://intense-ocean-27340.herokuapp.com/blogCount')
             .then(res => res.json())
             .then(data => {
                 const count = data.result;

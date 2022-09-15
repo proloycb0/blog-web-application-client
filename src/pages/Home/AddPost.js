@@ -36,7 +36,7 @@ const AddPost = ({refetch}) => {
         }
 
         // send to your database
-        fetch('http://localhost:5000/blogs', {
+        fetch('https://intense-ocean-27340.herokuapp.com/blogs', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

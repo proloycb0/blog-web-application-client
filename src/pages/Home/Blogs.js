@@ -10,7 +10,7 @@ import Sidebar from './Sidebar';
 
 const Blogs = () => {
     const [user] = useAuthState(auth)
-    const { data: blogs, isLoading, refetch } = useQuery(["blogs", user], () => fetch(`http://localhost:5000/blog?userEmail=${user.email}`, {
+    const { data: blogs, isLoading, refetch } = useQuery(["blogs", user], () => fetch(`https://intense-ocean-27340.herokuapp.com/blog?userEmail=${user.email}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

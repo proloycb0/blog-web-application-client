@@ -15,8 +15,7 @@ import Trash from './pages/Home/Trash';
 import Profile from './pages/Shared/Profile';
 import MyAccount from './pages/Shared/MyAccount';
 import HomePage from "./pages/HomePage/HomePage";
-import RightBar from "./pages/Home/RightBar";
-import Sidebar from "./pages/Home/Sidebar";
+import NotFound from "./pages/Shared/NotFound";
 
 function App() {
   return (
@@ -32,6 +31,7 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/myAccount' element={<MyAccount />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       <ToastContainer />
     </Box>

@@ -18,7 +18,7 @@ const Archived = ({ blog, refetch }) => {
     const { _id, name, description, image, userName, photo } = blog;
 
     const handleDelete = () => {
-        fetch(`http://localhost:5000/archive/${_id}`, {
+        fetch(`https://intense-ocean-27340.herokuapp.com/archive/${_id}`, {
             method: 'DELETE',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

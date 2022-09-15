@@ -89,7 +89,7 @@ const Blog = ({ blog, refetch }) => {
             })
     }
     return (
-        <Card>
+        <Card sx={{minHeight: '70vh'}}>
             <CardHeader
                 avatar={
                     <Avatar src={photo} sx={{ bgcolor: "primary" }} aria-label="recipe">

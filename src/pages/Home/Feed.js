@@ -8,7 +8,7 @@ import Post from './Post';
 const Feed = () => {
     const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(0);
-    const [size, setSize] = useState(2);
+    const [size, setSize] = useState(6);
     const { data: blogs, isLoading, refetch } = useQuery(["blogs", page, size], () => fetch(`http://localhost:5000/blogs?page=${page}&size=${size}`, {
         method: 'GET',
         headers: {
@@ -23,7 +23,7 @@ const Feed = () => {
             .then(res => res.json())
             .then(data => {
                 const count = data.result;
-                const pages = Math.ceil(count / 2);
+                const pages = Math.ceil(count / 6);
                 setPageCount(pages);
             })
     }, []);

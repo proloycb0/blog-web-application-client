@@ -23,19 +23,16 @@ const Icons = styled(Box)(({ theme }) => ({
 }));
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const [user, loading] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
-  if(loading){
-    return <Loading/>
-  }
   return (
     <AppBar position='sticky'>
       <StyledToolbar>
-        <Typography variant={{xs: 'p', md: 'h6'}}><Link style={{ textDecoration: 'none', color: 'white' }} to="/">Kep Blogger</Link></Typography>
+        <Typography sx={{fontSize: {xs: '15px', sm: '20px'}}}><Link style={{ textDecoration: 'none', color: 'white' }} to="/">Kep Blogger</Link></Typography>
         <Search><InputBase placeholder='Search...' /></Search>
         <Icons>
-          <Avatar onClick={e => setOpen(true)} alt="" src={user && user?.photoURL} />
+          <Avatar onClick={e => setOpen(true)} alt="" src={user?.photoURL} />
         </Icons>
       </StyledToolbar>
       <Menu sx={{ marginTop: "40px" }}

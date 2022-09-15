@@ -1,9 +1,11 @@
-import { Box, Button, Grid, Modal, styled, TextField, Typography } from '@mui/material';
+import { Box, Button, Grid, Modal, Stack, styled, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useAuthState, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { toast } from 'react-toastify';
 import Loading from './Loading';
+import RightBar from '../Home/RightBar';
+import Sidebar from '../Home/Sidebar';
 
 
 const StyledModal = styled(Modal)({
@@ -77,42 +79,47 @@ const ProfileModal = ({ refetch }) => {
             })
     }
     return (
-        <Box flex={4} p={{ xs: 0, md: 2 }} align='center'>
-            <Box
-                width={{ xs: '70vw', sm: 300 }}
-                bgcolor={"background.default"}
-                color={"text.primary"}
-                p={3}
-                borderRadius={5}
-            >
-                <Typography align='center' variant="h5">
-                    Edit Profile
-                </Typography>
-                <form>
-                    <Grid container spacing={1}>
-                        <Grid item xs={12}>
-                            <TextField value={name} onChange={(e) => setName(e.target.value)} type="name" label="Name" variant="outlined" fullWidth required />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField value={user?.email} type="email" label="Email" variant="outlined" fullWidth required />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField onChange={(e) => setImage(e.target.value)} type="link" placeholder="Photo url" label="Image" variant="outlined" fullWidth />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField onChange={(e) => setPhone(e.target.value)} type="number" placeholder="Enter phone number" label="Phone" variant="outlined" fullWidth />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField onChange={(e) => setAddress(e.target.value)} type="text" placeholder="Enter your address" label="Address" variant="outlined" fullWidth />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Button onClick={() => handleSubmit()} type="submit" variant="contained" color="primary" fullWidth>Submit</Button>
-                        </Grid>
+        <Stack direction="row" spacing={2} justifyContent="space-between">
+            <Sidebar />
+            <Box flex={4} p={{ xs: 0, md: 2 }} align='center'>
+                <Box
+                    width={{ xs: '70vw', sm: 300 }}
+                    bgcolor={"background.default"}
+                    color={"text.primary"}
+                    p={3}
+                    borderRadius={5}
+                >
+                    <Typography align='center' variant="h5">
+                        Edit Profile
+                    </Typography>
+                    <form>
+                        <Grid container spacing={1}>
+                            <Grid item xs={12}>
+                                <TextField value={name} onChange={(e) => setName(e.target.value)} type="name" label="Name" variant="outlined" fullWidth required />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField value={user?.email} type="email" label="Email" variant="outlined" fullWidth required />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField onChange={(e) => setImage(e.target.value)} type="link" placeholder="Photo url" label="Image" variant="outlined" fullWidth />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField onChange={(e) => setPhone(e.target.value)} type="number" placeholder="Enter phone number" label="Phone" variant="outlined" fullWidth />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField onChange={(e) => setAddress(e.target.value)} type="text" placeholder="Enter your address" label="Address" variant="outlined" fullWidth />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Button onClick={() => handleSubmit()} type="submit" variant="contained" color="primary" fullWidth>Submit</Button>
+                            </Grid>
 
-                    </Grid>
-                </form>
+                        </Grid>
+                    </form>
+                </Box>
             </Box>
-        </Box>
+            <RightBar />
+        </Stack>
+
     );
 };
 

@@ -18,7 +18,7 @@ const Sidebar = () => {
         <Box flex={{xs: 0, md: 1}}>
             <Box position='fixed'>
                 <List component="nav" aria-label="main mailbox folders">
-                    <ListItemButton as={Link} to='/'
+                    <ListItemButton as={Link} to='/home'
                         selected={selectedIndex === 0}
                         onClick={(event) => handleListItemClick(event, 0)}
                     >

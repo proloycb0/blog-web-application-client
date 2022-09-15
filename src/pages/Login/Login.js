@@ -7,6 +7,7 @@ import auth from '../../firebase.init';
 import { toast } from 'react-toastify';
 import Loading from '../Shared/Loading';
 import useToken from '../../hooks/useToken';
+import Footer from '../Shared/Footer';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -38,7 +39,7 @@ const Login = () => {
         return <Loading />
     }
     if (error || gError) {
-        signInError = <p style={{color: 'red'}}><small>{error?.message || gError?.message}</small></p>
+        signInError = <p style={{ color: 'red' }}><small>{error?.message || gError?.message}</small></p>
     }
     const handleSubmit = async () => {
         await signInWithEmailAndPassword(email, password);
@@ -54,28 +55,31 @@ const Login = () => {
         }
     }
     return (
-        <Grid flex={4} p={{ xs: 0, md: 2 }}>
-            <Paper elevation={20} style={paperStyle}>
-                <Grid align='center'>
-                    <Avatar style={avatarStyle}><LockOutlinedIcon /></Avatar>
-                    <h2>Sign In</h2>
-                </Grid>
-                <TextField onChange={(e) => setEmail(e.target.value)} variant="standard" label='Username' placeholder='Enter username' type='email' fullWidth required sx={{ marginBottom: "10px" }} />
-                <TextField onChange={(e) => setPassword(e.target.value)} variant="standard" label='Password' placeholder='Enter password' type='password' fullWidth required />
-                <Typography sx={{ marginTop: "10px" }}>Forgot password ?
-                    <Link style={{ textDecoration: 'none' }} to="" onClick={() => handleReset()}>Reset Password</Link>
-                </Typography>
-                {signInError}
-                <Button onClick={() => handleSubmit()} type='submit' color='primary' variant="contained" style={btnStyle} fullWidth>Sign in</Button>
-                <Typography > New to Kep Blogger ?
-                    <Link style={{ textDecoration: 'none'}} to="/signup" >
-                        SignUp
-                    </Link>
-                </Typography>
-                <Divider>OR</Divider>
-                <Button onClick={() => signInWithGoogle()} color='primary' variant="contained" style={btnStyle} fullWidth>Google Sign in</Button>
-            </Paper>
-        </Grid>
+        <>
+            <Grid flex={4} p={{ xs: 0, md: 2 }}>
+                <Paper elevation={20} style={paperStyle}>
+                    <Grid align='center'>
+                        <Avatar style={avatarStyle}><LockOutlinedIcon /></Avatar>
+                        <h2>Sign In</h2>
+                    </Grid>
+                    <TextField onChange={(e) => setEmail(e.target.value)} variant="standard" label='Username' placeholder='Enter username' type='email' fullWidth required sx={{ marginBottom: "10px" }} />
+                    <TextField onChange={(e) => setPassword(e.target.value)} variant="standard" label='Password' placeholder='Enter password' type='password' fullWidth required />
+                    <Typography sx={{ marginTop: "10px" }}>Forgot password ?
+                        <Link style={{ textDecoration: 'none' }} to="" onClick={() => handleReset()}>Reset Password</Link>
+                    </Typography>
+                    {signInError}
+                    <Button onClick={() => handleSubmit()} type='submit' color='primary' variant="contained" style={btnStyle} fullWidth>Sign in</Button>
+                    <Typography > New to Kep Blogger ?
+                        <Link style={{ textDecoration: 'none' }} to="/signup" >
+                            SignUp
+                        </Link>
+                    </Typography>
+                    <Divider>OR</Divider>
+                    <Button onClick={() => signInWithGoogle()} color='primary' variant="contained" style={btnStyle} fullWidth>Google Sign in</Button>
+                </Paper>
+            </Grid>
+            <Footer />
+        </>
     );
 };
 

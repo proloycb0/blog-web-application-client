@@ -20,7 +20,7 @@ const Profile = () => {
         return <Loading />
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = () => {
         let nameText;
         let imageUrl;
         let phoneNumber;
@@ -49,7 +49,7 @@ const Profile = () => {
         else {
             addressText = address;
         }
-
+        console.log(nameText, imageUrl, phoneNumber, addressText)
         const users = {
             name: nameText,
             photo: imageUrl,

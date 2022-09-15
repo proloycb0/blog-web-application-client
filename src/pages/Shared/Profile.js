@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Modal, Stack, styled, TextField, Typography } from '@mui/material';
+import { Box, Button, Grid, Stack, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useAuthState, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
@@ -51,7 +51,6 @@ const Profile = () => {
         }
 
         const users = {
-
             name: nameText,
             photo: imageUrl,
             phone: phoneNumber,
@@ -69,7 +68,6 @@ const Profile = () => {
             .then(res => res.json())
             .then(async (data) => {
                 toast.success('save information successfully');
-                <Loading />
                 await updateProfile({ displayName: nameText, photoURL: imageUrl });
             })
     }

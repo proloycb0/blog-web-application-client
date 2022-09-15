@@ -8,12 +8,7 @@ import RightBar from '../Home/RightBar';
 import Sidebar from '../Home/Sidebar';
 
 
-const StyledModal = styled(Modal)({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-});
-const ProfileModal = ({ refetch }) => {
+const Profile = () => {
     const [user] = useAuthState(auth);
     const [name, setName] = useState(user?.displayName);
     const [phone, setPhone] = useState('');
@@ -123,4 +118,4 @@ const ProfileModal = ({ refetch }) => {
     );
 };
 
-export default ProfileModal;
+export default Profile;

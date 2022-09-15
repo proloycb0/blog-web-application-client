@@ -30,8 +30,8 @@ const MyAccount = () => {
             <Sidebar />
             <Box flex={4} p={{ xs: 0, md: 2 }}>
                 {
-                    users?.map(userOwn => <Card key={user._id} align='center' sx={{ width: { xs: '75vw', md: '30vw' }, margin: { xs: 4, md: '70px auto' } }}>
-                        <Avatar sx={{ width: 200, height: 200, margin: 3 }} alt={user.name} src={user?.photoURL} />
+                    users?.map(userOwn => <Card key={userOwn._id} align='center' sx={{ width: { xs: '75vw', md: '30vw' }, margin: { xs: 4, md: '70px auto' } }}>
+                        <Avatar sx={{ width: 200, height: 200, margin: 3 }} alt={userOwn.name} src={user?.photoURL} />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
                                 {userOwn.name}

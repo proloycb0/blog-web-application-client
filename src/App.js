@@ -24,13 +24,13 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/home' element={<RequireAuth><Home /></RequireAuth>} />
-          <Route path='/blogs' element={<Blogs />} />
-          <Route path='/archive' element={<Archive />} />
-          <Route path='/trash' element={<Trash />} />
+          <Route path='/blogs' element={<RequireAuth><Blogs /></RequireAuth>} />
+          <Route path='/archive' element={<RequireAuth><Archive /></RequireAuth>} />
+          <Route path='/trash' element={<RequireAuth><Trash /></RequireAuth>} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/myAccount' element={<MyAccount />} />
+          <Route path='/profile' element={<RequireAuth><Profile /></RequireAuth>} />
+          <Route path='/myAccount' element={<RequireAuth><MyAccount /></RequireAuth>} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       <ToastContainer />

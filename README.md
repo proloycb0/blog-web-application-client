@@ -1,6 +1,6 @@
 # Kep Blogger
 
-Live site link: [https://carnocar-parts-manufacture.web.app/](https://carnocar-parts-manufacture.web.app/) 
+Live site link: [https://kep-blogger-application.web.app/](https://kep-blogger-application.web.app/) 
 
 ## Features
 

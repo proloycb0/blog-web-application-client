@@ -57,7 +57,7 @@ const Profile = () => {
             address: addressText
         }
 
-        fetch(`https://intense-ocean-27340.herokuapp.com/user/${user?.email}`, {
+        fetch(`https://blog-web-application-server.onrender.com/user/${user?.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

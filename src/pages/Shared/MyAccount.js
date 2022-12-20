@@ -14,7 +14,7 @@ import Loading from './Loading';
 const MyAccount = () => {
     const [user] = useAuthState(auth);
 
-    const { data: users, isLoading } = useQuery(['users', user], () => fetch(`https://intense-ocean-27340.herokuapp.com/user?email=${user?.email}`, {
+    const { data: users, isLoading } = useQuery(['users', user], () => fetch(`https://blog-web-application-server.onrender.com/user?email=${user?.email}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

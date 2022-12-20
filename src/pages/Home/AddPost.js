@@ -36,7 +36,7 @@ const AddPost = ({refetch}) => {
         }
 
         // send to your database
-        fetch('https://intense-ocean-27340.herokuapp.com/blogs', {
+        fetch('https://blog-web-application-server.onrender.com/blogs', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

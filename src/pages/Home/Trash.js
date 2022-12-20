@@ -11,7 +11,7 @@ import TrashItem from './TrashItem';
 
 const Trash = () => {
     const [user] = useAuthState(auth)
-    const { data: trashes, isLoading, refetch } = useQuery(['trash', user], () => fetch(`https://intense-ocean-27340.herokuapp.com/trash?email=${user.email}`, {
+    const { data: trashes, isLoading, refetch } = useQuery(['trash', user], () => fetch(`https://blog-web-application-server.onrender.com/trash?email=${user.email}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
